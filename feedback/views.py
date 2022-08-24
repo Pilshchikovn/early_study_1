@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from .forms import FeedBackForm
 from .models import Feedback
 from django.views import View
-
+from django.views.generic.base import TemplateView
 
 class FeedBackView(View):
     def get(self,request):
@@ -18,21 +18,35 @@ class FeedBackView(View):
         else:
             return render(request, 'feedback/feedback.html', context={'form': form})
 
+class DoneView(TemplateView):
+    template_name = 'feedback/done.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['name']='Ivanov I.I.'
+        context['date'] = '23.08.20202'
+        return context
 
-def index(request):
-    if request.method == "POST":
-        form = FeedBackForm(request.POST)
-        if form.is_valid():
-            print(form.cleaned_data)
-            form.save()
-            return HttpResponseRedirect('/done')
-    else:
-        form = FeedBackForm()
-    return render(request, 'feedback/feedback.html', context={'form': form})
+# class DoneView(View):
+#     def get(self,request):
+#         return render(request, 'feedback/done.html')
 
 
-def done(request):
-    return render(request, 'feedback/done.html')
+
+
+# def index(request):
+#     if request.method == "POST":
+#         form = FeedBackForm(request.POST)
+#         if form.is_valid():
+#             print(form.cleaned_data)
+#             form.save()
+#             return HttpResponseRedirect('/done')
+#     else:
+#         form = FeedBackForm()
+#     return render(request, 'feedback/feedback.html', context={'form': form})
+#
+#
+# def done(request):
+#     return render(request, 'feedback/done.html')
 
 
 def update_feedback(request, id_feedback):
