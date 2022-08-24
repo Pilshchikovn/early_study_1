@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'feedback/forms.css'%}">
+</head>
+<body>
+<h2>Оставьте отзыв</h2>
+<form  method="post">
+    {% csrf_token %}
+    {%for field in form%}
+    <div class="form-style">
+        {{field.label_tag}}
+        {{field.errors}}
+        {{field}}
+    </div>
+    {%endfor%}
+
+    <button type="submit">send</button>
+</form>
+
+</body>
+</html>
+
+
+<!--    <div>{{form.name.label_tag}}-->
+<!--        {{form.name}}-->
+<!--        {{form.name.errors}}-->
+<!--    </div>-->
+<!--    <div>{{form.surname.label_tag}}-->
+<!--        {{form.surname}}-->
+<!--        {{form.surname.errors}}-->
+<!--    </div>-->
+<!--    <div>{{form.rating.label_tag}}-->
+<!--        {{form.rating}}-->
+<!--        {{form.rating.errors}}-->
+<!--    </div>-->
+<!--    <div>{{form.feedback.label_tag}}-->
+<!--        {{form.feedback}}-->
+<!--        {{form.feedback.errors}}-->
+<!--    </div>-->
+
+
