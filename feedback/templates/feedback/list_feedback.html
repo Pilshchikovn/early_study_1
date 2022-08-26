@@ -1,0 +1,20 @@
+{% extends 'feedback/base.html' %}
+
+{% block title %}
+Все отзывы
+{% endblock %}
+
+{% block content %}
+<h2>Все отзывы</h2>
+<ul>
+{% for i in object_list %}
+        <li>id: {{i.id}}             {{i.name}} - {{i.surname}} : {{i.rating}}</li>
+{% endfor %}
+</ul>
+{% endblock %}
+
+
+
+<!--{% for i in all %}-->
+<!--        <li>{{i.name}} - {{i.surname}} : {{i.rating}}</li>-->
+<!--{% endfor %}-->

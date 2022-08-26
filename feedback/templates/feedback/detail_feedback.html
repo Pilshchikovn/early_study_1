@@ -1,0 +1,18 @@
+{% extends 'feedback/base.html' %}
+
+{% block title %}
+Информация об отзыве
+{% endblock %}
+
+{% block content %}
+<h2>Информация об отзыве</h2>
+<h3>Имя - {{ object.name }}</h3>
+<h3>Фамилия - {{ feedback.surname }}</h3>
+<h3>Рейтнг - {{ feedback.rating }}</h3>
+<h3>{{ feedback.feedback }}</h3>
+{% endblock %}
+
+<!--ИМЯ ДОЛЖНО БЫТЬ ТОЛЬКО feedback-->
+<!--ОНА БЕРЕТСЯ ИЗ НАЗВАНИЯ ВАШЕЙ МОЖЕЛИ В НИЖНЕМ РЕГИСТЕ-->
+<!--ИЛИ object-->
+
